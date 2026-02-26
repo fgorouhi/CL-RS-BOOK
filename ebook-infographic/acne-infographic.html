@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Clear Skin Blueprint — Quick-Reference Infographic</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#fff;color:#333;max-width:900px;margin:0 auto}
+
+/* Header */
+.header{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;text-align:center;padding:48px 24px 36px;border-radius:0 0 24px 24px}
+.header h1{font-size:2.2rem;margin-bottom:8px}
+.header h1 span{color:#2ECC71}
+.header p{opacity:.8;font-size:1rem}
+
+/* Section */
+.section{padding:36px 24px}
+.section h2{font-size:1.5rem;color:#1a1a2e;margin-bottom:20px;padding-bottom:8px;border-bottom:3px solid #2ECC71;display:inline-block}
+
+/* Routine Grid */
+.routine-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:12px}
+.routine-card{border-radius:14px;padding:24px;position:relative;overflow:hidden}
+.routine-card.morning{background:linear-gradient(135deg,#fff9e6,#fff3cc);border:1px solid #f0d060}
+.routine-card.evening{background:linear-gradient(135deg,#e8eaf6,#d1d5f0);border:1px solid #9fa8da}
+.routine-card h3{font-size:1.15rem;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.routine-card ol{margin-left:18px;font-size:.95rem;line-height:2}
+
+/* Ingredient Cards */
+.ingredient-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+.ingredient{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:12px;padding:18px;text-align:center;transition:.2s}
+.ingredient:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.1)}
+.ingredient .emoji{font-size:2rem;margin-bottom:8px}
+.ingredient h4{font-size:.95rem;color:#4A90D9;margin-bottom:4px}
+.ingredient p{font-size:.8rem;color:#666}
+
+/* Food Grid */
+.food-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.food-col{border-radius:12px;padding:20px}
+.food-col.good{background:#e8f5e9;border:1px solid #a5d6a7}
+.food-col.bad{background:#fbe9e7;border:1px solid #ef9a9a}
+.food-col h3{font-size:1.05rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.food-col ul{margin-left:18px;font-size:.92rem;line-height:2}
+
+/* Habit List */
+.habits{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.habit{display:flex;align-items:flex-start;gap:10px;background:#f0f7ff;border-radius:10px;padding:16px}
+.habit .icon{font-size:1.5rem;flex-shrink:0}
+.habit .text h4{font-size:.95rem;margin-bottom:2px}
+.habit .text p{font-size:.82rem;color:#666}
+
+/* Acne Types */
+.types-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.type-card{background:#fff;border:1px solid #e0e0e0;border-radius:12px;padding:18px;text-align:center}
+.type-card .severity{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:600;margin-bottom:8px}
+.type-card .severity.mild{background:#e8f5e9;color:#2e7d32}
+.type-card .severity.moderate{background:#fff3e0;color:#e65100}
+.type-card .severity.severe{background:#fbe9e7;color:#c62828}
+.type-card h4{font-size:.95rem;margin-bottom:4px}
+.type-card p{font-size:.82rem;color:#666}
+
+/* Warning / Tip */
+.callout{border-radius:12px;padding:20px;margin:24px 0;font-size:.95rem;display:flex;align-items:flex-start;gap:12px}
+.callout.tip{background:#e8f5e9;border:1px solid #a5d6a7}
+.callout.warn{background:#fff3e0;border:1px solid #ffcc80}
+.callout .callout-icon{font-size:1.5rem;flex-shrink:0}
+
+/* Footer */
+.footer{background:#1a1a2e;color:rgba(255,255,255,.7);text-align:center;padding:30px 24px;font-size:.85rem;border-radius:24px 24px 0 0;margin-top:20px}
+
+@media(max-width:600px){
+  .routine-grid,.food-grid{grid-template-columns:1fr}
+  .header h1{font-size:1.7rem}
+}
+@media print{
+  body{max-width:100%}
+  .header{border-radius:0}
+  .footer{border-radius:0}
+  .section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>&#128218; <span>Clear Skin</span> Blueprint</h1>
+  <p>Quick-Reference Infographic &bull; Your Cheat Sheet for Clear Skin</p>
+</div>
+
+<!-- DAILY ROUTINES -->
+<div class="section">
+  <h2>&#9201; Daily Skincare Routine</h2>
+  <div class="routine-grid">
+    <div class="routine-card morning">
+      <h3>&#9728;&#65039; Morning</h3>
+      <ol>
+        <li>Gentle cleanser</li>
+        <li>Vitamin C serum or niacinamide</li>
+        <li>Lightweight moisturizer</li>
+        <li><strong>Sunscreen SPF 30+</strong></li>
+      </ol>
+    </div>
+    <div class="routine-card evening">
+      <h3>&#127769; Evening</h3>
+      <ol>
+        <li>Oil cleanser / micellar water</li>
+        <li>Water-based cleanser</li>
+        <li>Exfoliant (2-3x/week)</li>
+        <li>Retinoid or treatment</li>
+        <li>Moisturizer</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- KEY INGREDIENTS -->
+<div class="section">
+  <h2>&#129514; Key Ingredients</h2>
+  <div class="ingredient-grid">
+    <div class="ingredient">
+      <div class="emoji">&#128167;</div>
+      <h4>Salicylic Acid</h4>
+      <p>Unclogs pores &bull; 0.5-2%</p>
+    </div>
+    <div class="ingredient">
+      <div class="emoji">&#128165;</div>
+      <h4>Benzoyl Peroxide</h4>
+      <p>Kills bacteria &bull; 2.5-5%</p>
+    </div>
+    <div class="ingredient">
+      <div class="emoji">&#11088;</div>
+      <h4>Retinoids</h4>
+      <p>Gold standard &bull; Cell turnover</p>
+    </div>
+    <div class="ingredient">
+      <div class="emoji">&#128170;</div>
+      <h4>Niacinamide</h4>
+      <p>Anti-inflammatory &bull; 2-10%</p>
+    </div>
+    <div class="ingredient">
+      <div class="emoji">&#127819;</div>
+      <h4>Glycolic Acid</h4>
+      <p>Exfoliates surface &bull; AHA</p>
+    </div>
+    <div class="ingredient">
+      <div class="emoji">&#127793;</div>
+      <h4>Azelaic Acid</h4>
+      <p>Fades dark spots &bull; 10-20%</p>
+    </div>
+  </div>
+</div>
+
+<!-- ACNE TYPES -->
+<div class="section">
+  <h2>&#128269; Types of Acne</h2>
+  <div class="types-grid">
+    <div class="type-card">
+      <span class="severity mild">Mild</span>
+      <h4>Blackheads</h4>
+      <p>Open comedones, dark from oxidation</p>
+    </div>
+    <div class="type-card">
+      <span class="severity mild">Mild</span>
+      <h4>Whiteheads</h4>
+      <p>Closed comedones, small bumps</p>
+    </div>
+    <div class="type-card">
+      <span class="severity moderate">Moderate</span>
+      <h4>Papules &amp; Pustules</h4>
+      <p>Red bumps, sometimes with pus</p>
+    </div>
+    <div class="type-card">
+      <span class="severity severe">Severe</span>
+      <h4>Nodules &amp; Cysts</h4>
+      <p>Deep, painful — see a dermatologist</p>
+    </div>
+  </div>
+</div>
+
+<!-- DIET -->
+<div class="section">
+  <h2>&#127860; Diet Tips</h2>
+  <div class="food-grid">
+    <div class="food-col good">
+      <h3>&#9989; Skin-Friendly Foods</h3>
+      <ul>
+        <li>Salmon &amp; sardines (omega-3)</li>
+        <li>Leafy greens &amp; berries</li>
+        <li>Pumpkin seeds (zinc)</li>
+        <li>Green tea (antioxidants)</li>
+        <li>Probiotic-rich foods</li>
+      </ul>
+    </div>
+    <div class="food-col bad">
+      <h3>&#10060; Potential Triggers</h3>
+      <ul>
+        <li>Sugar &amp; high-glycemic foods</li>
+        <li>Dairy (especially skim milk)</li>
+        <li>Whey protein supplements</li>
+        <li>Processed / fried foods</li>
+        <li>Excess alcohol</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- LIFESTYLE HABITS -->
+<div class="section">
+  <h2>&#128736;&#65039; Daily Habits</h2>
+  <div class="habits">
+    <div class="habit">
+      <div class="icon">&#128164;</div>
+      <div class="text"><h4>Sleep 7-9 Hours</h4><p>Skin repairs overnight. Poor sleep raises cortisol.</p></div>
+    </div>
+    <div class="habit">
+      <div class="icon">&#128167;</div>
+      <div class="text"><h4>Drink 8 Glasses Water</h4><p>Hydrated skin produces less excess oil.</p></div>
+    </div>
+    <div class="habit">
+      <div class="icon">&#129495;</div>
+      <div class="text"><h4>Exercise Regularly</h4><p>Boosts circulation. Shower after sweating.</p></div>
+    </div>
+    <div class="habit">
+      <div class="icon">&#128524;</div>
+      <div class="text"><h4>Manage Stress</h4><p>Meditation, deep breathing, journaling.</p></div>
+    </div>
+    <div class="habit">
+      <div class="icon">&#128241;</div>
+      <div class="text"><h4>Clean Your Phone</h4><p>Wipe screen daily to avoid transferring bacteria.</p></div>
+    </div>
+    <div class="habit">
+      <div class="icon">&#128716;</div>
+      <div class="text"><h4>Fresh Pillowcase</h4><p>Change every 2-3 days or use silk.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- CALLOUTS -->
+<div class="section">
+  <div class="callout warn">
+    <div class="callout-icon">&#9888;&#65039;</div>
+    <div><strong>Don't:</strong> Pop cysts, over-wash your face, use too many actives at once, skip sunscreen, or expect overnight results. Most treatments take 6-12 weeks.</div>
+  </div>
+  <div class="callout tip">
+    <div class="callout-icon">&#128161;</div>
+    <div><strong>Do:</strong> Keep a skin diary, introduce products one at a time, patch test everything, and see a dermatologist if OTC treatments haven't worked after 12 weeks.</div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>&copy; 2026 Clear Skin Blueprint &bull; For Educational Purposes Only &bull; Not Medical Advice</p>
+</div>
+
+</body>
+</html>
