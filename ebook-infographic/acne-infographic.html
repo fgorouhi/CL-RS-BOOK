@@ -8,11 +8,15 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#fff;color:#333;max-width:900px;margin:0 auto}
 
+/* Page break utility */
+.page-break{page-break-before:always;break-before:page;margin-top:40px}
+
 /* Header */
-.header{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;text-align:center;padding:48px 24px 36px;border-radius:0 0 24px 24px}
-.header h1{font-size:2.2rem;margin-bottom:8px}
+.header{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;text-align:center;padding:48px 24px 36px;border-radius:0 0 24px 24px;position:relative;overflow:hidden}
+.header::before{content:"";position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(46,204,113,.15) 0%,transparent 70%);border-radius:50%}
+.header h1{font-size:2.2rem;margin-bottom:8px;position:relative;z-index:1}
 .header h1 span{color:#2ECC71}
-.header p{opacity:.8;font-size:1rem}
+.header p{opacity:.8;font-size:1rem;position:relative;z-index:1}
 
 /* Section */
 .section{padding:36px 24px}
@@ -26,40 +30,61 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#fff;c
 .routine-card h3{font-size:1.15rem;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .routine-card ol{margin-left:18px;font-size:.95rem;line-height:2}
 
+/* Watermark for routine cards */
+.routine-card .watermark{position:absolute;bottom:-10px;right:-10px;font-size:8rem;opacity:.08;pointer-events:none;line-height:1}
+
 /* Ingredient Cards */
-.ingredient-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
-.ingredient{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:12px;padding:18px;text-align:center;transition:.2s}
-.ingredient:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.1)}
+.ingredient-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ingredient{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:12px;padding:18px;text-align:center}
 .ingredient .emoji{font-size:2rem;margin-bottom:8px}
-.ingredient h4{font-size:.95rem;color:#4A90D9;margin-bottom:4px}
+.ingredient h4{font-size:.95rem;color:#4A90D9;margin-bottom:2px}
+.ingredient .sub{font-size:.72rem;color:#888;font-style:italic;margin-bottom:4px}
 .ingredient p{font-size:.8rem;color:#666}
 
-/* Food Grid */
-.food-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.food-col{border-radius:12px;padding:20px}
-.food-col.good{background:#e8f5e9;border:1px solid #a5d6a7}
-.food-col.bad{background:#fbe9e7;border:1px solid #ef9a9a}
-.food-col h3{font-size:1.05rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.food-col ul{margin-left:18px;font-size:.92rem;line-height:2}
-
-/* Habit List */
-.habits{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.habit{display:flex;align-items:flex-start;gap:10px;background:#f0f7ff;border-radius:10px;padding:16px}
-.habit .icon{font-size:1.5rem;flex-shrink:0}
-.habit .text h4{font-size:.95rem;margin-bottom:2px}
-.habit .text p{font-size:.82rem;color:#666}
-
-/* Acne Types */
-.types-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.type-card{background:#fff;border:1px solid #e0e0e0;border-radius:12px;padding:18px;text-align:center}
+/* Acne types visual */
+.types-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.type-card{background:#fff;border:1px solid #e0e0e0;border-radius:14px;padding:20px;text-align:center;position:relative}
 .type-card .severity{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:600;margin-bottom:8px}
 .type-card .severity.mild{background:#e8f5e9;color:#2e7d32}
 .type-card .severity.moderate{background:#fff3e0;color:#e65100}
 .type-card .severity.severe{background:#fbe9e7;color:#c62828}
-.type-card h4{font-size:.95rem;margin-bottom:4px}
-.type-card p{font-size:.82rem;color:#666}
+.type-card h4{font-size:1rem;margin-bottom:6px}
+.type-card p{font-size:.82rem;color:#666;margin-bottom:10px}
+.type-card .visual{width:100%;height:90px;border-radius:10px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.type-card .visual svg{width:100%;height:100%}
 
-/* Warning / Tip */
+/* Food Grid - full page */
+.food-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.food-col{border-radius:12px;padding:24px}
+.food-col.good{background:#e8f5e9;border:1px solid #a5d6a7}
+.food-col.bad{background:#fbe9e7;border:1px solid #ef9a9a}
+.food-col h3{font-size:1.1rem;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.food-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+.food-item:last-child{border-bottom:none}
+.food-item .food-icon{font-size:2rem;flex-shrink:0;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:rgba(255,255,255,.7)}
+.food-item .food-info h4{font-size:.92rem;margin-bottom:2px}
+.food-item .food-info p{font-size:.8rem;color:#666}
+
+/* Habits - full page */
+.habits-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.habit-card{display:flex;align-items:flex-start;gap:14px;background:#f0f7ff;border-radius:14px;padding:20px;position:relative;overflow:hidden}
+.habit-card .habit-visual{font-size:2.5rem;flex-shrink:0;width:60px;height:60px;display:flex;align-items:center;justify-content:center;background:rgba(74,144,217,.1);border-radius:14px}
+.habit-card .habit-text h4{font-size:.95rem;margin-bottom:4px;color:#1a1a2e}
+.habit-card .habit-text p{font-size:.82rem;color:#666;line-height:1.4}
+
+/* Dos and Don'ts - full page */
+.dos-donts-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.dos-col,.donts-col{border-radius:14px;padding:24px}
+.dos-col{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border:2px solid #66bb6a}
+.donts-col{background:linear-gradient(135deg,#fbe9e7,#ffccbc);border:2px solid #ef5350}
+.dos-col h3,.donts-col h3{font-size:1.15rem;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.rule-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+.rule-item:last-child{border-bottom:none}
+.rule-item .rule-icon{font-size:1.5rem;flex-shrink:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(255,255,255,.6)}
+.rule-item .rule-text h4{font-size:.92rem;margin-bottom:2px}
+.rule-item .rule-text p{font-size:.78rem;color:#555;line-height:1.4}
+
+/* Callout */
 .callout{border-radius:12px;padding:20px;margin:24px 0;font-size:.95rem;display:flex;align-items:flex-start;gap:12px}
 .callout.tip{background:#e8f5e9;border:1px solid #a5d6a7}
 .callout.warn{background:#fff3e0;border:1px solid #ffcc80}
@@ -68,8 +93,9 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#fff;c
 /* Footer */
 .footer{background:#1a1a2e;color:rgba(255,255,255,.7);text-align:center;padding:30px 24px;font-size:.85rem;border-radius:24px 24px 0 0;margin-top:20px}
 
-@media(max-width:600px){
-  .routine-grid,.food-grid{grid-template-columns:1fr}
+@media screen and (max-width:600px){
+  .routine-grid,.food-grid,.types-grid,.habits-grid,.dos-donts-grid{grid-template-columns:1fr}
+  .ingredient-grid{grid-template-columns:1fr 1fr}
   .header h1{font-size:1.7rem}
 }
 @media print{
@@ -77,11 +103,13 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#fff;c
   .header{border-radius:0}
   .footer{border-radius:0}
   .section{page-break-inside:avoid}
+  .page-break{page-break-before:always}
 }
 </style>
 </head>
 <body>
 
+<!-- ========== PAGE 1: COVER & ROUTINE ========== -->
 <div class="header">
   <h1>&#128218; <span>Clear Skin</span> Blueprint</h1>
   <p>Quick-Reference Infographic &bull; Your Cheat Sheet for Clear Skin</p>
@@ -92,6 +120,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#fff;c
   <h2>&#9201; Daily Skincare Routine</h2>
   <div class="routine-grid">
     <div class="routine-card morning">
+      <div class="watermark">&#9728;&#65039;</div>
       <h3>&#9728;&#65039; Morning</h3>
       <ol>
         <li>Gentle cleanser</li>
@@ -101,11 +130,12 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#fff;c
       </ol>
     </div>
     <div class="routine-card evening">
+      <div class="watermark">&#127769;</div>
       <h3>&#127769; Evening</h3>
       <ol>
         <li>Oil cleanser / micellar water</li>
         <li>Water-based cleanser</li>
-        <li>Exfoliant (2-3x/week)</li>
+        <li>Exfoliant (at least 2-3x/week)</li>
         <li>Retinoid or treatment</li>
         <li>Moisturizer</li>
       </ol>
@@ -120,130 +150,397 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#fff;c
     <div class="ingredient">
       <div class="emoji">&#128167;</div>
       <h4>Salicylic Acid</h4>
-      <p>Unclogs pores &bull; 0.5-2%</p>
+      <div class="sub">Beta Hydroxy Acid (BHA)</div>
+      <p>Unclogs pores &amp; exfoliates surface &bull; 0.5-3% OTC</p>
     </div>
     <div class="ingredient">
       <div class="emoji">&#128165;</div>
       <h4>Benzoyl Peroxide</h4>
-      <p>Kills bacteria &bull; 2.5-5%</p>
+      <div class="sub">&nbsp;</div>
+      <p>Kills bacteria &bull; 2.5-10%</p>
     </div>
     <div class="ingredient">
       <div class="emoji">&#11088;</div>
       <h4>Retinoids</h4>
-      <p>Gold standard &bull; Cell turnover</p>
+      <div class="sub">Gold Standard</div>
+      <p>Removes white &amp; blackheads &bull; Increases cell turnover</p>
     </div>
     <div class="ingredient">
       <div class="emoji">&#128170;</div>
       <h4>Niacinamide</h4>
+      <div class="sub">Vitamin B3</div>
       <p>Anti-inflammatory &bull; 2-10%</p>
     </div>
     <div class="ingredient">
       <div class="emoji">&#127819;</div>
       <h4>Glycolic Acid</h4>
-      <p>Exfoliates surface &bull; AHA</p>
+      <div class="sub">Alpha Hydroxy Acid (AHA)</div>
+      <p>Exfoliates surface &bull; 2-10% OTC</p>
     </div>
     <div class="ingredient">
       <div class="emoji">&#127793;</div>
       <h4>Azelaic Acid</h4>
-      <p>Fades dark spots &bull; 10-20%</p>
+      <div class="sub">&nbsp;</div>
+      <p>Fades dark spots &bull; 10% (OTC) - 20%</p>
     </div>
   </div>
 </div>
 
-<!-- ACNE TYPES -->
+<!-- ========== PAGE 2: ACNE TYPES ========== -->
+<div class="page-break"></div>
 <div class="section">
-  <h2>&#128269; Types of Acne</h2>
+  <h2>&#128269; Types of Acne — Visual Guide</h2>
   <div class="types-grid">
+
     <div class="type-card">
       <span class="severity mild">Mild</span>
-      <h4>Blackheads</h4>
-      <p>Open comedones, dark from oxidation</p>
+      <h4>Blackheads (Open Comedones)</h4>
+      <p>Dark from oxidation, open at the surface</p>
+      <div class="visual">
+        <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="skin1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5d6b8"/><stop offset="100%" stop-color="#e8c4a0"/></linearGradient></defs>
+          <rect width="200" height="90" rx="10" fill="url(#skin1)"/>
+          <circle cx="50" cy="45" r="8" fill="#d4a574"/><circle cx="50" cy="45" r="4" fill="#3d2b1f"/>
+          <circle cx="100" cy="45" r="8" fill="#d4a574"/><circle cx="100" cy="45" r="4" fill="#3d2b1f"/>
+          <circle cx="150" cy="45" r="8" fill="#d4a574"/><circle cx="150" cy="45" r="4" fill="#3d2b1f"/>
+          <text x="100" y="82" text-anchor="middle" font-size="9" fill="#8b6f47" font-family="sans-serif">Dark open pores on skin surface</text>
+        </svg>
+      </div>
     </div>
+
     <div class="type-card">
       <span class="severity mild">Mild</span>
-      <h4>Whiteheads</h4>
-      <p>Closed comedones, small bumps</p>
+      <h4>Whiteheads (Closed Comedones)</h4>
+      <p>Closed under skin, small flesh-colored bumps</p>
+      <div class="visual">
+        <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="skin2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5d6b8"/><stop offset="100%" stop-color="#e8c4a0"/></linearGradient></defs>
+          <rect width="200" height="90" rx="10" fill="url(#skin2)"/>
+          <circle cx="50" cy="42" r="10" fill="#f0d0a8" stroke="#e0bf90" stroke-width="1"/><circle cx="50" cy="40" r="4" fill="#faf0e0"/>
+          <circle cx="100" cy="42" r="10" fill="#f0d0a8" stroke="#e0bf90" stroke-width="1"/><circle cx="100" cy="40" r="4" fill="#faf0e0"/>
+          <circle cx="150" cy="42" r="10" fill="#f0d0a8" stroke="#e0bf90" stroke-width="1"/><circle cx="150" cy="40" r="4" fill="#faf0e0"/>
+          <text x="100" y="82" text-anchor="middle" font-size="9" fill="#8b6f47" font-family="sans-serif">Small raised bumps, closed surface</text>
+        </svg>
+      </div>
     </div>
+
     <div class="type-card">
       <span class="severity moderate">Moderate</span>
-      <h4>Papules &amp; Pustules</h4>
-      <p>Red bumps, sometimes with pus</p>
+      <h4>Papules</h4>
+      <p>Small red inflamed bumps, no visible pus</p>
+      <div class="visual">
+        <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="skin3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5d6b8"/><stop offset="100%" stop-color="#e8c4a0"/></linearGradient></defs>
+          <rect width="200" height="90" rx="10" fill="url(#skin3)"/>
+          <circle cx="50" cy="42" r="11" fill="#e88080" opacity=".7"/><circle cx="50" cy="42" r="6" fill="#d95050"/>
+          <circle cx="100" cy="42" r="11" fill="#e88080" opacity=".7"/><circle cx="100" cy="42" r="6" fill="#d95050"/>
+          <circle cx="150" cy="42" r="11" fill="#e88080" opacity=".7"/><circle cx="150" cy="42" r="6" fill="#d95050"/>
+          <text x="100" y="82" text-anchor="middle" font-size="9" fill="#8b6f47" font-family="sans-serif">Red inflamed bumps, tender to touch</text>
+        </svg>
+      </div>
     </div>
+
+    <div class="type-card">
+      <span class="severity moderate">Moderate</span>
+      <h4>Pustules</h4>
+      <p>Red base with visible white/yellow pus tip</p>
+      <div class="visual">
+        <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="skin4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5d6b8"/><stop offset="100%" stop-color="#e8c4a0"/></linearGradient></defs>
+          <rect width="200" height="90" rx="10" fill="url(#skin4)"/>
+          <circle cx="50" cy="44" r="12" fill="#e88080" opacity=".6"/><circle cx="50" cy="42" r="7" fill="#d95050"/><circle cx="50" cy="38" r="3.5" fill="#ffffcc"/>
+          <circle cx="100" cy="44" r="12" fill="#e88080" opacity=".6"/><circle cx="100" cy="42" r="7" fill="#d95050"/><circle cx="100" cy="38" r="3.5" fill="#ffffcc"/>
+          <circle cx="150" cy="44" r="12" fill="#e88080" opacity=".6"/><circle cx="150" cy="42" r="7" fill="#d95050"/><circle cx="150" cy="38" r="3.5" fill="#ffffcc"/>
+          <text x="100" y="82" text-anchor="middle" font-size="9" fill="#8b6f47" font-family="sans-serif">Pus-filled with red inflamed base</text>
+        </svg>
+      </div>
+    </div>
+
     <div class="type-card">
       <span class="severity severe">Severe</span>
-      <h4>Nodules &amp; Cysts</h4>
-      <p>Deep, painful — see a dermatologist</p>
+      <h4>Nodules</h4>
+      <p>Large, hard, deep under skin — painful</p>
+      <div class="visual">
+        <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="skin5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5d6b8"/><stop offset="100%" stop-color="#e8c4a0"/></linearGradient></defs>
+          <rect width="200" height="90" rx="10" fill="url(#skin5)"/>
+          <ellipse cx="70" cy="45" rx="22" ry="16" fill="#c75050" opacity=".5"/><ellipse cx="70" cy="45" rx="14" ry="10" fill="#b73a3a"/>
+          <ellipse cx="150" cy="45" rx="22" ry="16" fill="#c75050" opacity=".5"/><ellipse cx="150" cy="45" rx="14" ry="10" fill="#b73a3a"/>
+          <text x="100" y="82" text-anchor="middle" font-size="9" fill="#8b6f47" font-family="sans-serif">Deep, solid, painful lumps under skin</text>
+        </svg>
+      </div>
     </div>
+
+    <div class="type-card">
+      <span class="severity severe">Severe</span>
+      <h4>Cysts</h4>
+      <p>Deep pus-filled, soft — high scarring risk. See a dermatologist</p>
+      <div class="visual">
+        <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="skin6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5d6b8"/><stop offset="100%" stop-color="#e8c4a0"/></linearGradient></defs>
+          <rect width="200" height="90" rx="10" fill="url(#skin6)"/>
+          <ellipse cx="70" cy="44" rx="24" ry="18" fill="#c75050" opacity=".4"/><ellipse cx="70" cy="44" rx="16" ry="12" fill="#b73a3a" opacity=".7"/><ellipse cx="70" cy="42" rx="8" ry="6" fill="#e8c080" opacity=".6"/>
+          <ellipse cx="150" cy="44" rx="24" ry="18" fill="#c75050" opacity=".4"/><ellipse cx="150" cy="44" rx="16" ry="12" fill="#b73a3a" opacity=".7"/><ellipse cx="150" cy="42" rx="8" ry="6" fill="#e8c080" opacity=".6"/>
+          <text x="100" y="82" text-anchor="middle" font-size="9" fill="#8b6f47" font-family="sans-serif">Deep pus-filled sacs, risk of scarring</text>
+        </svg>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<!-- DIET -->
+<!-- ========== PAGE 3: DIET TIPS ========== -->
+<div class="page-break"></div>
 <div class="section">
-  <h2>&#127860; Diet Tips</h2>
+  <h2>&#127860; Diet Tips for Clear Skin</h2>
   <div class="food-grid">
     <div class="food-col good">
       <h3>&#9989; Skin-Friendly Foods</h3>
-      <ul>
-        <li>Salmon &amp; sardines (omega-3)</li>
-        <li>Leafy greens &amp; berries</li>
-        <li>Pumpkin seeds (zinc)</li>
-        <li>Green tea (antioxidants)</li>
-        <li>Probiotic-rich foods</li>
-      </ul>
+
+      <div class="food-item">
+        <div class="food-icon">&#127835;</div>
+        <div class="food-info"><h4>Salmon &amp; Sardines</h4><p>Rich in omega-3 fatty acids — reduces inflammation</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#129382;</div>
+        <div class="food-info"><h4>Leafy Greens</h4><p>Spinach, kale — packed with vitamins A, C, E</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#127827;</div>
+        <div class="food-info"><h4>Berries</h4><p>Blueberries, strawberries — antioxidant powerhouses</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#127820;</div>
+        <div class="food-info"><h4>Avocado</h4><p>Healthy fats &amp; vitamin E for skin repair</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#127834;</div>
+        <div class="food-info"><h4>Pumpkin Seeds</h4><p>Zinc-rich — supports skin healing &amp; reduces oil</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#127861;</div>
+        <div class="food-info"><h4>Green Tea</h4><p>EGCG antioxidants — anti-inflammatory &amp; sebum control</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#129472;</div>
+        <div class="food-info"><h4>Probiotic Foods</h4><p>Yogurt, kimchi, sauerkraut — gut-skin axis support</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#127821;</div>
+        <div class="food-info"><h4>Oranges &amp; Citrus</h4><p>Vitamin C — collagen production &amp; brightening</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#129381;</div>
+        <div class="food-info"><h4>Sweet Potato</h4><p>Beta-carotene converts to vitamin A — skin cell turnover</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#129408;</div>
+        <div class="food-info"><h4>Walnuts &amp; Almonds</h4><p>Vitamin E &amp; omega-3 — protect skin barrier</p></div>
+      </div>
     </div>
+
     <div class="food-col bad">
       <h3>&#10060; Potential Triggers</h3>
-      <ul>
-        <li>Sugar &amp; high-glycemic foods</li>
-        <li>Dairy (especially skim milk)</li>
-        <li>Whey protein supplements</li>
-        <li>Processed / fried foods</li>
-        <li>Excess alcohol</li>
-      </ul>
+
+      <div class="food-item">
+        <div class="food-icon">&#127852;</div>
+        <div class="food-info"><h4>Sugar &amp; Sweets</h4><p>Spikes insulin — increases sebum &amp; inflammation</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#127848;</div>
+        <div class="food-info"><h4>White Bread &amp; Pasta</h4><p>High glycemic — rapid blood sugar spikes</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#129371;</div>
+        <div class="food-info"><h4>Dairy (esp. Skim Milk)</h4><p>Hormones &amp; IGF-1 — linked to breakouts</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#129472;</div>
+        <div class="food-info"><h4>Whey Protein</h4><p>Spikes insulin &amp; IGF-1 — common acne trigger</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#127839;</div>
+        <div class="food-info"><h4>Processed &amp; Fried Foods</h4><p>Inflammatory oils &amp; excess sodium</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#127870;</div>
+        <div class="food-info"><h4>Excess Alcohol</h4><p>Dehydrates skin, disrupts hormones, inflames gut</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#127851;</div>
+        <div class="food-info"><h4>Chocolate (High Sugar)</h4><p>Sugar content may worsen breakouts for some</p></div>
+      </div>
+      <div class="food-item">
+        <div class="food-icon">&#129364;</div>
+        <div class="food-info"><h4>Soda &amp; Sugary Drinks</h4><p>Liquid sugar — high glycemic load</p></div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- LIFESTYLE HABITS -->
+<!-- ========== PAGE 4: DAILY HABITS ========== -->
+<div class="page-break"></div>
 <div class="section">
-  <h2>&#128736;&#65039; Daily Habits</h2>
-  <div class="habits">
-    <div class="habit">
-      <div class="icon">&#128164;</div>
-      <div class="text"><h4>Sleep 7-9 Hours</h4><p>Skin repairs overnight. Poor sleep raises cortisol.</p></div>
+  <h2>&#128736;&#65039; Daily Habits for Clear Skin</h2>
+  <div class="habits-grid">
+
+    <div class="habit-card">
+      <div class="habit-visual">&#128164;</div>
+      <div class="habit-text">
+        <h4>Sleep 7-9 Hours</h4>
+        <p>Skin repairs and regenerates overnight. Poor sleep raises cortisol, which increases oil production and breakouts.</p>
+      </div>
     </div>
-    <div class="habit">
-      <div class="icon">&#128167;</div>
-      <div class="text"><h4>Drink 8 Glasses Water</h4><p>Hydrated skin produces less excess oil.</p></div>
+
+    <div class="habit-card">
+      <div class="habit-visual">&#128167;</div>
+      <div class="habit-text">
+        <h4>Drink 8+ Glasses of Water</h4>
+        <p>Hydrated skin produces less excess oil. Water flushes toxins and supports cell turnover.</p>
+      </div>
     </div>
-    <div class="habit">
-      <div class="icon">&#129495;</div>
-      <div class="text"><h4>Exercise Regularly</h4><p>Boosts circulation. Shower after sweating.</p></div>
+
+    <div class="habit-card">
+      <div class="habit-visual">&#129495;</div>
+      <div class="habit-text">
+        <h4>Exercise Regularly</h4>
+        <p>Boosts blood circulation and delivers nutrients to skin. Always shower and cleanse face after sweating.</p>
+      </div>
     </div>
-    <div class="habit">
-      <div class="icon">&#128524;</div>
-      <div class="text"><h4>Manage Stress</h4><p>Meditation, deep breathing, journaling.</p></div>
+
+    <div class="habit-card">
+      <div class="habit-visual">&#128524;</div>
+      <div class="habit-text">
+        <h4>Manage Stress</h4>
+        <p>Stress triggers cortisol spikes. Practice meditation, deep breathing, yoga, or journaling daily.</p>
+      </div>
     </div>
-    <div class="habit">
-      <div class="icon">&#128241;</div>
-      <div class="text"><h4>Clean Your Phone</h4><p>Wipe screen daily to avoid transferring bacteria.</p></div>
+
+    <div class="habit-card">
+      <div class="habit-visual">&#128241;</div>
+      <div class="habit-text">
+        <h4>Clean Your Phone Screen</h4>
+        <p>Wipe your phone screen daily with an antibacterial cloth. Phones harbor bacteria that transfer to your face.</p>
+      </div>
     </div>
-    <div class="habit">
-      <div class="icon">&#128716;</div>
-      <div class="text"><h4>Fresh Pillowcase</h4><p>Change every 2-3 days or use silk.</p></div>
+
+    <div class="habit-card">
+      <div class="habit-visual">&#128716;</div>
+      <div class="habit-text">
+        <h4>Fresh Pillowcase</h4>
+        <p>Change pillowcase every 2-3 days or use a silk pillowcase. Reduces bacteria and friction on skin.</p>
+      </div>
     </div>
+
+    <div class="habit-card">
+      <div class="habit-visual">&#9728;&#65039;</div>
+      <div class="habit-text">
+        <h4>Wear Sunscreen Daily</h4>
+        <p>SPF 30+ every morning, even on cloudy days. UV damage worsens acne scars and post-inflammatory hyperpigmentation.</p>
+      </div>
+    </div>
+
+    <div class="habit-card">
+      <div class="habit-visual">&#128080;</div>
+      <div class="habit-text">
+        <h4>Don't Touch Your Face</h4>
+        <p>Hands carry bacteria and oils. Avoid picking, popping, or resting chin on hands throughout the day.</p>
+      </div>
+    </div>
+
+    <div class="habit-card">
+      <div class="habit-visual">&#129529;</div>
+      <div class="habit-text">
+        <h4>Wash Makeup Brushes</h4>
+        <p>Clean brushes and sponges weekly. They accumulate bacteria, oil, and dead skin cells.</p>
+      </div>
+    </div>
+
+    <div class="habit-card">
+      <div class="habit-visual">&#127838;</div>
+      <div class="habit-text">
+        <h4>Eat Clean, Balanced Meals</h4>
+        <p>Low-glycemic foods, plenty of vegetables, lean protein. Gut health directly impacts skin health.</p>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<!-- CALLOUTS -->
+<!-- ========== PAGE 5: DO'S AND DON'TS ========== -->
+<div class="page-break"></div>
 <div class="section">
-  <div class="callout warn">
-    <div class="callout-icon">&#9888;&#65039;</div>
-    <div><strong>Don't:</strong> Pop cysts, over-wash your face, use too many actives at once, skip sunscreen, or expect overnight results. Most treatments take 6-12 weeks.</div>
-  </div>
-  <div class="callout tip">
-    <div class="callout-icon">&#128161;</div>
-    <div><strong>Do:</strong> Keep a skin diary, introduce products one at a time, patch test everything, and see a dermatologist if OTC treatments haven't worked after 12 weeks.</div>
+  <h2>&#9989; Do's &amp; &#10060; Don'ts</h2>
+  <div class="dos-donts-grid">
+
+    <div class="dos-col">
+      <h3>&#9989; DO</h3>
+
+      <div class="rule-item">
+        <div class="rule-icon">&#128221;</div>
+        <div class="rule-text"><h4>Keep a Skin Diary</h4><p>Track products, diet, sleep, and breakouts to identify your personal triggers.</p></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">&#129514;</div>
+        <div class="rule-text"><h4>Introduce Products One at a Time</h4><p>Wait 2-4 weeks between new products so you can isolate what works or causes irritation.</p></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">&#128076;</div>
+        <div class="rule-text"><h4>Patch Test Everything</h4><p>Apply a small amount on your inner arm or jawline for 48 hours before full application.</p></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">&#129658;</div>
+        <div class="rule-text"><h4>See a Dermatologist</h4><p>If OTC treatments haven't worked after 12 weeks, get professional guidance.</p></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">&#9201;</div>
+        <div class="rule-text"><h4>Be Patient &amp; Consistent</h4><p>Most treatments need 6-12 weeks to show results. Stick with your routine.</p></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">&#9728;&#65039;</div>
+        <div class="rule-text"><h4>Always Apply Sunscreen</h4><p>SPF protects healing skin and prevents dark spots from worsening.</p></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">&#128167;</div>
+        <div class="rule-text"><h4>Stay Hydrated</h4><p>Water supports every skin function from repair to oil regulation.</p></div>
+      </div>
+
+    </div>
+
+    <div class="donts-col">
+      <h3>&#10060; DON'T</h3>
+
+      <div class="rule-item">
+        <div class="rule-icon">&#128078;</div>
+        <div class="rule-text"><h4>Pop or Squeeze Cysts</h4><p>Pushes infection deeper, causes scarring, and spreads bacteria.</p></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">&#128561;</div>
+        <div class="rule-text"><h4>Over-Wash Your Face</h4><p>Washing more than 2x/day strips oils and triggers rebound oiliness.</p></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">&#129514;</div>
+        <div class="rule-text"><h4>Use Too Many Actives at Once</h4><p>Layering AHA + BHA + retinoid = destroyed skin barrier. Simplify.</p></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">&#9940;</div>
+        <div class="rule-text"><h4>Skip Sunscreen</h4><p>UV exposure darkens acne marks and causes premature aging.</p></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">&#9889;</div>
+        <div class="rule-text"><h4>Expect Overnight Results</h4><p>No product works instantly. Give treatments at least 6-12 weeks.</p></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">&#128148;</div>
+        <div class="rule-text"><h4>Sleep in Makeup</h4><p>Clogs pores overnight when skin should be breathing and repairing.</p></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">&#128683;</div>
+        <div class="rule-text"><h4>Share Towels or Pillowcases</h4><p>Bacteria and oils transfer — always use your own clean linens.</p></div>
+      </div>
+
+    </div>
+
   </div>
 </div>
 
